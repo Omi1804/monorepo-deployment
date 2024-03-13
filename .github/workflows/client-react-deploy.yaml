@@ -18,10 +18,10 @@ jobs:
 
       - name: SSH and deploy
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
         run: |
           echo "$SSH_PRIVATE_KEY" > demo.pem
           chmod 600 demo.pem
           mkdir -p ~/.ssh
           cp known_hosts ~/.ssh/known_hosts
-          ssh -i "demo.pem" ubuntu@ec2-35-94-110-75.us-west-2.compute.amazonaws.com "sudo bash /home/ubuntu/week-12-monorepo-full/apps/client-react/deploy.sh"
+          ssh -t -i demo.pem ubuntu@ec2-35-94-110-75.us-west-2.compute.amazonaws.com "sudo bash /home/ubuntu/week-12-monorepo-full/apps/client-react/deploy.sh"
