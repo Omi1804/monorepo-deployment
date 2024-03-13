@@ -20,8 +20,9 @@ jobs:
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
       run: |
+        ssh-keyscan ec2-35-94-110-75.us-west-2.compute.amazonaws.com >> ~/.ssh/known_hosts
         echo "$SSH_PRIVATE_KEY" > demo.pem
         chmod 600 demo.pem
         mkdir -p ~/.ssh
-        cp known_hosts ~/.ssh/known_hosts
+        
         ssh -t -i demo.pem ubuntu@ec2-35-94-110-75.us-west-2.compute.amazonaws.com "sudo bash /home/ubuntu/week-12-monorepo-full/apps/express-backend/deploy.sh"
