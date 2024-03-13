@@ -25,4 +25,4 @@ jobs:
         chmod 600 demo.pem
         mkdir -p ~/.ssh
         cp known_hosts ~/.ssh/known_hosts
-        ssh -t -i demo.pem ubuntu@ec2-35-94-110-75.us-west-2.compute.amazonaws.com "sudo bash /home/ubuntu/week-12-monorepo-full/apps/client-next/deploy.sh"
+        ssh -t -i demo.pem ubuntu@ec2-35-94-110-75.us-west-2.compute.amazonaws.com "sudo bash /home/ubuntu/monorepo-deployment/apps/client-next/deploy.sh"
